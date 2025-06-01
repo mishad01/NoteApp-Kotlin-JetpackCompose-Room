@@ -9,27 +9,33 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateListOf
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavController
 import com.example.noteapp.data.NotesDataSource
+import com.example.noteapp.navigation.NoteScreensNavigation
 import com.example.noteapp.ui.screens.HomeScreen
+import com.example.noteapp.ui.screens.MainApp
 import com.example.noteapp.ui.theme.NoteAppTheme
+
+data object HomeScreen
+data object AddEditNoteScreen
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            NoteAppTheme {
-                HomeScreen(
-                    onAddNote = { },
-                    onRemoveNote = {},
-                    notes = NotesDataSource().loadNotes()
-                )
+            NoteAppTheme() {
+                NoteScreensNavigation()
             }
         }
     }
 }
+
 
 @Composable
 fun Greeting(name: String, modifier: Modifier = Modifier) {
@@ -42,9 +48,5 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
-    HomeScreen(
-        onAddNote = { },
-        onRemoveNote = {},
-        notes = NotesDataSource().loadNotes()
-    )
+   NoteScreensNavigation()
 }
