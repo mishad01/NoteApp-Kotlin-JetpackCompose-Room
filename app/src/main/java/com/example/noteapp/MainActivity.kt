@@ -11,6 +11,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.noteapp.data.NotesDataSource
 import com.example.noteapp.ui.screens.HomeScreen
 import com.example.noteapp.ui.theme.NoteAppTheme
 
@@ -20,8 +21,11 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             NoteAppTheme {
-
-                HomeScreen()
+                HomeScreen(
+                    onAddNote = { },
+                    onRemoveNote = {},
+                    notes = NotesDataSource().loadNotes()
+                )
             }
         }
     }
@@ -38,7 +42,9 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
-    NoteAppTheme {
-        Greeting("Android")
-    }
+    HomeScreen(
+        onAddNote = { },
+        onRemoveNote = {},
+        notes = NotesDataSource().loadNotes()
+    )
 }

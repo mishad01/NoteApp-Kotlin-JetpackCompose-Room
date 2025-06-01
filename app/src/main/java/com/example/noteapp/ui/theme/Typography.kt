@@ -24,6 +24,13 @@ val interFontFamily = FontFamily(
         fontProvider = provider
     )
 )
+val poppinsFontFamily = FontFamily(
+    Font(
+        googleFont = GoogleFont("Poppins"),
+        fontProvider = provider
+    )
+)
+
 
 // Typography setup with Inter font for bodyLarge, bodyMedium, and bodySmall
 val AppTypography = Typography(
@@ -41,6 +48,31 @@ val AppTypography = Typography(
     ),
     bodySmall = TextStyle(
         fontFamily = interFontFamily,
+        fontWeight = FontWeight.Normal,
+        fontSize = 12.sp,
+        letterSpacing = 0.4.sp
+    )
+)
+val AppTypographyPoppins = Typography(
+    titleMedium = TextStyle(
+        fontFamily = poppinsFontFamily,
+        fontWeight = FontWeight.Medium,
+        fontSize = 18.sp
+    ),
+    bodyLarge = TextStyle(
+        fontFamily = interFontFamily, // You can keep Inter here or change to poppinsFontFamily
+        fontWeight = FontWeight.Normal,
+        fontSize = 16.sp,
+        letterSpacing = 0.5.sp
+    ),
+    bodyMedium = TextStyle(
+        fontFamily = poppinsFontFamily,
+        fontWeight = FontWeight.Normal,
+        fontSize = 14.sp,
+        letterSpacing = 0.25.sp
+    ),
+    bodySmall = TextStyle(
+        fontFamily = poppinsFontFamily,
         fontWeight = FontWeight.Normal,
         fontSize = 12.sp,
         letterSpacing = 0.4.sp
