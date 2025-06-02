@@ -22,10 +22,12 @@ import com.example.noteapp.ui.screens.HomeScreen
 import com.example.noteapp.ui.screens.MainApp
 import com.example.noteapp.ui.screens.NoteViewModel
 import com.example.noteapp.ui.theme.NoteAppTheme
+import dagger.hilt.android.AndroidEntryPoint
 
 data object HomeScreen
 data object AddEditNoteScreen
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
