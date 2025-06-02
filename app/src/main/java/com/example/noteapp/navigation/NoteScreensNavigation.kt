@@ -1,14 +1,13 @@
 package com.example.noteapp.navigation
 
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.remember
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.noteapp.AddEditNoteScreen
-import com.example.noteapp.HomeScreen
+import androidx.navigation.navArgument
 import com.example.noteapp.ui.screens.AddEditNoteScreen
-import com.example.noteapp.ui.screens.HomeScreen
+import com.example.noteapp.ui.screens.DetailsScreen
 import com.example.noteapp.ui.screens.MainApp
 
 @Composable
@@ -23,6 +22,21 @@ fun NoteScreensNavigation() {
         }
         composable(NoteScreens.AddEditNoteScreen.name) {
             AddEditNoteScreen(navController = navController)
+        }
+        composable(
+            NoteScreens.DetailsScreen.name + "/{title}/{description}",
+            arguments = listOf(
+                navArgument(name = "title") { type = NavType.StringType },
+                navArgument("description") { type = NavType.StringType }
+            )
+        ) { backStackEntry ->
+            val title = backStackEntry.arguments?.getString("title") ?: ""
+            val description = backStackEntry.arguments?.getString("description") ?: ""
+            DetailsScreen(
+                navController = navController,
+                title,
+                description
+            )
         }
     }
 }

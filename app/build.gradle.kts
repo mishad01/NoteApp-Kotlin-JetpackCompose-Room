@@ -58,6 +58,8 @@ dependencies {
     debugImplementation(libs.androidx.ui.test.manifest)
     implementation(libs.androidx.ui.text.google.fonts)
     implementation("androidx.navigation:navigation-compose:2.9.0") // or latest
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.9.0")
+
 
 
 

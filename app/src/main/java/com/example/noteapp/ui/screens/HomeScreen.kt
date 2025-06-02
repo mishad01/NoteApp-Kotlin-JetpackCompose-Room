@@ -108,10 +108,7 @@ fun HomeScreen(
 
             FloatingActionButton(
                 onClick = {
-                    if (navController != null) {
-                        navController.navigate("AddEditNoteScreen")
-
-                    }
+                    navController?.navigate("AddEditNoteScreen")
                 },
                 shape = CircleShape,
                 containerColor = Color(
@@ -125,14 +122,15 @@ fun HomeScreen(
                 )
             }
         }) { paddingValues ->
-        GridItems(paddingValues, notes)
+        GridItems(paddingValues, notes,navController)
     }
 }
 
 @Composable
 private fun GridItems(
     paddingValues: PaddingValues,
-    notes: List<Note>
+    notes: List<Note>,
+    navController: NavController?
 ) {
     LazyVerticalStaggeredGrid(
         columns = StaggeredGridCells.Fixed(2),
@@ -144,7 +142,12 @@ private fun GridItems(
     ) {
         itemsIndexed(notes) { index, item ->
             val backGroundColor = noteCardColors[index % noteCardColors.size]
-            NoteCard(notes = item, backGroundColor = backGroundColor)
+            NoteCard(
+                notes = item,
+                backGroundColor = backGroundColor
+            ){
+                navController?.navigate("DetailsScreen/${item.title}/${item.description}")
+            }
         }
     }
 }

@@ -1,5 +1,6 @@
 package com.example.noteapp.ui.widgets
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -28,12 +29,14 @@ import com.example.noteapp.ui.theme.poppinsFontFamily
 fun NoteCard(
     modifier: Modifier = Modifier,
     notes: Note,
-    backGroundColor: Color
+    backGroundColor: Color,
+    onClick: (Note) -> Unit?
 ) {
     Card(
         modifier = modifier
             .fillMaxWidth()
-            .clip(RoundedCornerShape(16.dp)),
+            .clip(RoundedCornerShape(16.dp))
+            .clickable { onClick(notes) },
         colors = CardDefaults.cardColors(backGroundColor),
         shape = RoundedCornerShape(16.dp),
         elevation = CardDefaults.cardElevation(2.dp)
@@ -56,7 +59,7 @@ fun NoteCard(
                     fontFamily = poppinsFontFamily,
                     fontWeight = FontWeight.Medium,
                     fontSize = 12.sp,
-                    color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f) ,// 80% opacity
+                    color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f),// 80% opacity
                     textAlign = TextAlign.Center,
                 )
             )
