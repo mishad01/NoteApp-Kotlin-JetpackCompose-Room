@@ -1,16 +1,19 @@
 package com.example.noteapp.ui.screens
-
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
-import com.example.noteapp.HomeScreen
-import com.example.noteapp.data.NotesDataSource
+
 
 @Composable
-fun MainApp(navController: NavController){
+fun MainApp(
+    navController: NavController,
+    noteViewModel: NoteViewModel = hiltViewModel()
+) {
+    val notesList = noteViewModel.noteList.collectAsState(initial = emptyList()).value
     HomeScreen(
-        onAddNote = { },
-        onRemoveNote = {},
-        notes = NotesDataSource().loadNotes(),
+        notes = notesList,
         navController = navController
     )
 }
+

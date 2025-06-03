@@ -30,7 +30,7 @@ fun NoteCard(
     modifier: Modifier = Modifier,
     notes: Note,
     backGroundColor: Color,
-    onClick: (Note) -> Unit?
+    onClick: (Note) -> Unit
 ) {
     Card(
         modifier = modifier

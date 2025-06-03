@@ -1,6 +1,7 @@
 package com.example.noteapp.navigation
 
 import androidx.compose.runtime.Composable
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -18,7 +19,10 @@ fun NoteScreensNavigation() {
     ) {
         composable(NoteScreens.MainApp.name) {
             //Here we pass where this lead us to
-            MainApp(navController = navController)
+            MainApp(
+                navController = navController,
+                noteViewModel = hiltViewModel()
+            )
         }
         composable(NoteScreens.AddEditNoteScreen.name) {
             AddEditNoteScreen(navController = navController)

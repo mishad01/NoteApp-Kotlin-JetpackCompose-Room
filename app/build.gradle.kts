@@ -12,7 +12,7 @@ android {
 
     defaultConfig {
         applicationId = "com.example.noteapp"
-        minSdk = 35
+        minSdk = 26
         targetSdk = 35
         versionCode = 1
         versionName = "1.0"
@@ -67,6 +67,8 @@ dependencies {
     //Hilt Dagger
     implementation("com.google.dagger:hilt-android:2.56.2")
     ksp("com.google.dagger:hilt-android-compiler:2.56.2")
+    implementation ("androidx.hilt:hilt-navigation-compose:1.2.0")
+
 
     //Room
     val room_version = "2.7.1"
